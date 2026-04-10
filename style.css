@@ -27,6 +27,8 @@
 
     --radius:    10px;
     --radius-sm: 6px;
+
+    --header-height: 56px;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -47,7 +49,7 @@ header {
     position: sticky;
     top: 0;
     z-index: 200;
-    height: 56px;
+    min-height: var(--header-height);
     background: rgba(13, 17, 23, 0.92);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
@@ -57,7 +59,7 @@ header {
 .header-inner {
     max-width: 1440px;
     margin: 0 auto;
-    height: 100%;
+    min-height: var(--header-height);
     padding: 0 20px;
     display: flex;
     align-items: center;
@@ -69,16 +71,32 @@ header {
     align-items: center;
     gap: 8px;
     flex-shrink: 0;
+    min-width: 0;
     text-decoration: none;
 }
 
-.logo-mark { font-size: 20px; }
+.logo-mark {
+    width: 26px;
+    height: 26px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.logo-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
 
 .logo-name {
     font-size: 16px;
     font-weight: 700;
     color: var(--accent);
     letter-spacing: -0.3px;
+    white-space: nowrap;
 }
 
 .logo-sep,
@@ -91,6 +109,7 @@ header {
 .search-box {
     flex: 1;
     max-width: 520px;
+    min-width: 220px;
     position: relative;
     display: flex;
     align-items: center;
@@ -141,7 +160,7 @@ header {
     display: flex;
     max-width: 1440px;
     margin: 0 auto;
-    min-height: calc(100vh - 56px);
+    min-height: calc(100vh - var(--header-height));
 }
 
 /* ─── SIDEBAR ────────────────────────────────── */
@@ -520,6 +539,15 @@ footer {
 
 /* ─── RESPONSIVE ─────────────────────────────── */
 @media (max-width: 960px) {
+    :root { --header-height: 52px; }
+
+    .header-inner {
+        padding: 0 14px;
+        gap: 12px;
+    }
+
+    .search-box { max-width: none; }
+
     .app-layout { flex-direction: column; }
 
     .sidebar {
@@ -534,30 +562,145 @@ footer {
 
     #category-nav {
         flex-direction: row;
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        gap: 4px;
-        padding-bottom: 2px;
-        margin-bottom: 0;
-        scrollbar-width: none;
+        flex-wrap: wrap;
+        overflow-x: visible;
+        gap: 6px;
+        padding-bottom: 0;
+        margin-bottom: 6px;
     }
 
     #category-nav::-webkit-scrollbar { display: none; }
 
-    .nav-item { flex-shrink: 0; }
+    .nav-item {
+        flex: 0 0 auto;
+        width: auto;
+        padding: 7px 10px;
+    }
     .nav-count { display: none; }
     .sidebar-divider, .tag-filter-list,
     .sidebar-label:last-of-type { display: none; }
 
     .main-content { padding: 20px 16px 48px; }
-    .cards-grid { grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); }
+    .cards-grid { grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); }
+}
+
+@media (max-width: 760px) {
+    :root { --header-height: 94px; }
+
+    header { position: sticky; }
+
+    .header-inner {
+        align-items: center;
+        flex-wrap: wrap;
+        padding: 8px 12px;
+        gap: 8px 10px;
+    }
+
+    .logo {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .logo-name {
+        font-size: 15px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .search-box {
+        order: 3;
+        flex: 1 1 100%;
+        width: 100%;
+        min-width: 0;
+    }
+
+    #search {
+        font-size: 13px;
+        padding-top: 8px;
+        padding-bottom: 8px;
+    }
+
+    .header-right {
+        margin-left: 0;
+    }
+
+    .main-content {
+        padding: 16px 12px 42px;
+    }
+
+    .content-header {
+        margin-bottom: 16px;
+        gap: 8px;
+    }
+
+    .ch-text h1 {
+        font-size: 18px;
+    }
+
+    .ch-text p {
+        font-size: 12px;
+    }
+
+    .card {
+        padding: 14px;
+    }
+
+    .card-top {
+        gap: 10px;
+    }
+
+    .card-emoji {
+        font-size: 22px;
+    }
+
+    .card-code {
+        font-size: 11px;
+        padding: 9px 11px;
+    }
+
+    .card-foot {
+        gap: 8px;
+    }
+
+    .footer-inner {
+        gap: 8px;
+        font-size: 12px;
+    }
 }
 
 @media (max-width: 580px) {
     .logo-sep, .logo-sub { display: none; }
     .header-right { display: none; }
+    :root { --header-height: 92px; }
+
+    .header-inner {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .logo-mark {
+        width: 22px;
+        height: 22px;
+    }
+
+    .logo-name {
+        font-size: 14px;
+    }
+
     .cards-grid { grid-template-columns: 1fr; }
     .content-header { align-items: flex-start; }
+
+    .card-title {
+        font-size: 13px;
+    }
+
+    .card-desc {
+        font-size: 12px;
+    }
+
+    .empty-state {
+        padding: 52px 14px;
+    }
 }
 
 /* ─── SCROLLBAR (Webkit) ─────────────────────── */

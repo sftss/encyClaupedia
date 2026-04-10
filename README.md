@@ -13,4 +13,4 @@
 
 ## Stack
 
-Vanilla HTML / CSS / JS — aucune dépendance, GitHub Pages ready.
+Vanilla HTML / CSS / JS - aucune dépendance, GitHub Pages ready.
