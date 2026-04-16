@@ -2,7 +2,7 @@
 
 > Encyclopédie curatée d'outils, tips et frameworks pour Claude Code et l'écosystème IA.
 
-**50 ressources** organisées en 6 catégories : Claude Code · Skills & Plugins · IA Locale · Agent Frameworks · Tips & Tricks · Outils
+**100 ressources** organisées en 6 catégories : Claude Code · Skills & Plugins · IA Locale · Agent Frameworks · Tips & Tricks · Outils
 
 ## Fonctionnalités
 
