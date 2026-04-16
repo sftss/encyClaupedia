@@ -6,11 +6,11 @@
 
 ## Fonctionnalités
 
-- Recherche instantanée (`⌘K`)
+- Recherche instantanée (`⌘` ou `Ctrl + K` )
 - Filtres par catégorie et par tag
 - Snippets de code avec bouton copier
 - Design dark, responsive
 
 ## Stack
 
-Vanilla HTML / CSS / JS — aucune dépendance, GitHub Pages ready.
+Vanilla HTML / CSS / JS - aucune dépendance, GitHub Pages ready.

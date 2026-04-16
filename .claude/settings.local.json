@@ -1,9 +1,0 @@
-{
-  "permissions": {
-    "allow": [
-      "Bash(rtk ls:*)",
-      "WebFetch(domain:github.com)",
-      "WebFetch(domain:sftss.github.io)"
-    ]
-  }
-}
